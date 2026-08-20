@@ -1,0 +1,184 @@
+<meta charset="UTF-8">
+<title>参加登録 ― 8月23日 健康教室</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --cream:#FBF6EE; --white:#FFFFFF; --cream2:#F3ECE0;
+  --ink:#26231E; --ink2:#5E574C; --ink3:#938A7C;
+  --green:#2C5F45; --greensoft:#E9F0EA;
+  --coral:#C1543A; --coral2:#D96C4F; --coralsoft:#FBEDE7;
+  --line:#E2D8C7;
+  --fd:"Hiragino Mincho ProN","Yu Mincho",YuMincho,serif;
+  --fb:"Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic",YuGothic,sans-serif;
+}
+body{background:var(--cream);color:var(--ink);font-family:var(--fb);
+  font-size:17px;line-height:1.9;-webkit-text-size-adjust:100%}
+.wrap{max-width:27.5rem;width:100%;margin:0 auto;padding:0 1.15rem 5rem;overflow-x:hidden}
+b{font-weight:800}
+em{font-style:normal;color:var(--coral)}
+
+.hero{text-align:center;padding:2.6rem 0 1.8rem}
+.date{display:inline-flex;align-items:center;gap:.45rem;background:var(--ink);color:var(--cream);
+  font-size:.88rem;font-weight:700;padding:.42rem 1.15rem;border-radius:99px;margin-bottom:1.2rem}
+.date svg{width:1em;height:1em}
+h1{font-family:var(--fd);font-weight:600;font-size:1.85rem;line-height:1.5}
+.hero .sub{font-size:1rem;color:var(--ink2);margin-top:1rem}
+.freebadge{display:flex;align-items:center;justify-content:center;gap:.6rem;margin-top:1.3rem;flex-wrap:wrap}
+.fb1{background:var(--coral);color:#fff;font-weight:800;font-size:1.05rem;padding:.5rem 1.4rem;border-radius:99px}
+.fb2{font-size:.85rem;color:var(--ink2);font-weight:700}
+
+.card{background:var(--white);border:1px solid var(--line);border-radius:16px;
+  padding:1.45rem 1.3rem;margin-top:1.15rem;
+  box-shadow:0 1px 2px rgba(60,45,25,.04),0 8px 22px -14px rgba(60,45,25,.15)}
+.label{display:flex;align-items:center;gap:.55rem;font-size:1.02rem;font-weight:800;
+  color:var(--green);margin-bottom:1rem}
+.label .lic{flex:0 0 2rem;width:2rem;height:2rem;border-radius:50%;background:var(--greensoft);
+  display:flex;align-items:center;justify-content:center}
+.label .lic svg{width:1.15rem;height:1.15rem}
+
+.steps{display:flex;flex-direction:column;gap:1.05rem}
+.step{display:flex;gap:.9rem;align-items:flex-start}
+.st-n{flex:0 0 2.2rem;height:2.2rem;border-radius:50%;background:var(--coral2);color:#fff;
+  font-size:1.15rem;font-weight:800;display:flex;align-items:center;justify-content:center;margin-top:.1rem}
+.st-t{font-weight:800;font-size:1.02rem}
+.st-d{font-size:.9rem;color:var(--ink2);margin-top:.15rem;line-height:1.75}
+
+.field{text-align:left;margin:.85rem 0}
+.field label{display:block;font-size:.9rem;font-weight:800;color:var(--ink2);margin-bottom:.3rem}
+.field input{width:100%;font-family:var(--fb);font-size:1.15rem;padding:.85rem .9rem;
+  border:2px solid var(--line);border-radius:12px;background:var(--cream);color:var(--ink)}
+.field input:focus{outline:none;border-color:var(--green)}
+.err{color:var(--coral);font-size:.85rem;font-weight:800;min-height:1.3em;margin:.2rem 0 .3rem}
+
+.btn-main{display:block;width:100%;background:var(--green);color:#fff;border:none;font-family:var(--fb);
+  font-size:1.12rem;font-weight:800;padding:1.05rem;border-radius:99px;cursor:pointer;text-align:center;
+  text-decoration:none;box-shadow:0 6px 18px -6px rgba(44,95,69,.5)}
+.btn-main:active{transform:scale(.98)}
+.btn-line{display:block;width:100%;background:#06C755;color:#fff;border:none;font-family:var(--fb);
+  font-size:1.12rem;font-weight:800;padding:1.05rem;border-radius:99px;cursor:pointer;text-align:center;
+  text-decoration:none;box-shadow:0 6px 18px -6px rgba(6,199,85,.55);margin-top:.6rem}
+.btn-sub{display:block;width:100%;background:var(--white);color:var(--green);border:2px solid var(--green);
+  font-family:var(--fb);font-size:1.02rem;font-weight:800;padding:.9rem;border-radius:99px;cursor:pointer;
+  text-align:center;text-decoration:none;margin-top:.7rem}
+
+.fine{font-size:.8rem;color:var(--ink3);line-height:1.85;margin-top:1.1rem;
+  background:var(--cream2);border-radius:12px;padding:1rem 1.05rem}
+
+/* 完了画面 */
+.done{display:none;text-align:center}
+.done.show{display:block}
+.reg{display:block}
+.reg.hide{display:none}
+.done-ic{width:3.4rem;height:3.4rem;border-radius:50%;background:var(--green);color:#fff;
+  font-size:1.9rem;font-weight:800;display:flex;align-items:center;justify-content:center;
+  margin:1.8rem auto .8rem}
+.done h2{font-family:var(--fd);font-weight:600;font-size:1.5rem;line-height:1.5}
+.next{background:var(--white);border:1px solid var(--line);border-radius:16px;
+  padding:1.45rem 1.3rem;margin-top:1.15rem;text-align:left;
+  box-shadow:0 1px 2px rgba(60,45,25,.04),0 8px 22px -14px rgba(60,45,25,.15)}
+.next .nx-t{display:flex;align-items:center;gap:.6rem;font-weight:800;font-size:1.05rem;margin-bottom:.4rem}
+.next .nx-n{flex:0 0 2rem;height:2rem;border-radius:50%;background:var(--coral2);color:#fff;
+  font-size:1.05rem;font-weight:800;display:flex;align-items:center;justify-content:center}
+.next .nx-d{font-size:.9rem;color:var(--ink2);line-height:1.8}
+</style>
+<div class="wrap">
+
+  <div class="reg" id="reg">
+    <div class="hero">
+      <div class="date"><svg viewBox="0 0 24 24" fill="none" stroke="#FBF6EE" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M3.5 10h17M8 2.8v4M16 2.8v4"/></svg> 8月23日(日) 10:30〜12:00</div>
+      <h1>健康教室の<br><em>参加登録</em>はこちら</h1>
+      <p class="sub">「老化の正体は、たった3つ。」<br>ご参加前に、こちらのページから<br><b>参加登録</b>をお願いしています。</p>
+      <div class="freebadge"><span class="fb1">登録は1分で終わります</span></div>
+    </div>
+
+    <div class="card">
+      <p class="label"><span class="lic"><svg viewBox="0 0 24 24" fill="none" stroke="#2C5F45" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5h16a1.5 1.5 0 0 1 1.5 1.5v9a1.5 1.5 0 0 1-1.5 1.5h-9L6 21v-3.5H4A1.5 1.5 0 0 1 2.5 16V7A1.5 1.5 0 0 1 4 5.5z"/></svg></span>登録は、かんたん2歩</p>
+      <div class="steps">
+        <div class="step"><div class="st-n">1</div><div>
+          <div class="st-t">お名前と電話番号を送信</div>
+          <div class="st-d">下の欄に入れて、ボタンを押すだけです。</div>
+        </div></div>
+        <div class="step"><div class="st-n">2</div><div>
+          <div class="st-t">公式LINEを追加</div>
+          <div class="st-d">当日のご案内・場所のご連絡は、すべて公式LINEに届きます。</div>
+        </div></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <p class="label"><span class="lic"><svg viewBox="0 0 24 24" fill="none" stroke="#2C5F45" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4.5 20.5c1.2-4 4-6 7.5-6s6.3 2 7.5 6"/></svg></span>参加登録フォーム</p>
+      <div class="field"><label for="rg-name">お名前</label>
+        <input id="rg-name" type="text" autocomplete="name" placeholder="例: 山田 花子"></div>
+      <div class="field"><label for="rg-tel">お電話番号</label>
+        <input id="rg-tel" type="tel" autocomplete="tel" inputmode="tel" placeholder="例: 090-1234-5678"></div>
+      <p class="err" id="rg-err"></p>
+      <button class="btn-main" id="rg-send" onclick="send()">この内容で登録する</button>
+    </div>
+
+    <div class="card">
+      <p class="label"><span class="lic"><svg viewBox="0 0 24 24" fill="none" stroke="#2C5F45" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-5.6-7-11a7 7 0 0 1 14 0c0 5.4-7 11-7 11z"/><circle cx="12" cy="10" r="2.6"/></svg></span>当日のご案内</p>
+      <div class="st-d" style="font-size:.95rem">
+        <b>WISE SPACE鎌取</b>(千葉市緑区おゆみ野3-10-3)<br>
+        鎌取駅南口から歩いて約3分・5階建てビルの2階<br>
+        <b>10:10開場</b>/10:30〜12:00/参加費500円(当日受付でお支払い)
+      </div>
+    </div>
+
+    <div class="fine">
+      ご記入いただいた情報は、本教室のご連絡・運営のためだけに使い、それ以外の目的には使いません。<br>
+      本教室は医療行為ではなく、健康の維持・増進を目的とした教室です。
+    </div>
+  </div>
+
+  <div class="done" id="done">
+    <div class="done-ic">&#10003;</div>
+    <h2>登録ありがとうございます</h2>
+    <p class="sub" style="color:var(--ink2);font-size:.95rem;margin-top:.6rem">あと1歩だけ、お願いがあります。</p>
+
+    <div class="next">
+      <p class="nx-t"><span class="nx-n">2</span>公式LINEを追加してください</p>
+      <p class="nx-d">当日のご案内・持ち物・場所の写真は、<b>すべて公式LINEにお送りします</b>。まだの方は、下の緑のボタンから追加をお願いします。</p>
+      <a class="btn-line" href="https://lin.ee/zmnvHkP" target="_blank" rel="noopener">公式LINEを追加する</a>
+    </div>
+
+    <div class="next">
+      <p class="nx-t"><span class="nx-n">+</span>個別相談をご希望の方へ</p>
+      <p class="nx-d">教室のあと(12:00〜14:00)、<b>30分の無料個別相談</b>をご用意しています。ご希望の方は、こちらから時間をお選びください。</p>
+      <a class="btn-sub" href="./index.html">個別相談の時間をえらぶ</a>
+    </div>
+
+    <p class="st-d" style="text-align:center;margin-top:1.4rem">それでは、8月23日(日)にお会いできるのを<br>楽しみにしています。</p>
+  </div>
+
+</div>
+<iframe name="gform_frame" style="display:none" title="送信"></iframe>
+
+<script>
+var FORM_ACTION = 'https://docs.google.com/forms/d/e/1FAIpQLSdBquupDB8rNEOxQc2M72TcGXrCp0jxLRt4J13b9ydOhN1pWw/formResponse';
+function send(){
+  var name = document.getElementById('rg-name').value.trim();
+  var tel = document.getElementById('rg-tel').value.trim();
+  var err = document.getElementById('rg-err');
+  if(!name){ err.textContent = 'お名前を入れてください。'; return; }
+  if(!tel || !/^[0-9+\-() ]{8,}$/.test(tel)){ err.textContent = '電話番号をご確認ください(数字とハイフンで)。'; return; }
+  var btn = document.getElementById('rg-send');
+  btn.disabled = true; btn.textContent = '送信しています…';
+  var f = document.createElement('form');
+  f.action = FORM_ACTION; f.method = 'POST'; f.target = 'gform_frame';
+  var fields = {'entry.745846687': name, 'entry.927152766': tel};
+  for(var k in fields){
+    var i = document.createElement('input');
+    i.type = 'hidden'; i.name = k; i.value = fields[k];
+    f.appendChild(i);
+  }
+  document.body.appendChild(f);
+  f.submit();
+  setTimeout(function(){
+    f.remove();
+    document.getElementById('reg').classList.add('hide');
+    document.getElementById('done').classList.add('show');
+    window.scrollTo(0,0);
+  }, 900);
+}
+</script>
