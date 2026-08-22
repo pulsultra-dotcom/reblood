@@ -135,10 +135,10 @@ h1{font-family:var(--fd);font-weight:600;font-size:1.4rem;text-align:center;padd
         <div class="m-in"><input id="m-aku-r" type="text" inputmode="decimal"><span class="unit">kg</span></div></div>
       <div class="m-item"><p class="m-t">② 握力 <small>左</small></p>
         <div class="m-in"><input id="m-aku-l" type="text" inputmode="decimal"><span class="unit">kg</span></div></div>
-      <div class="m-item"><p class="m-t">④ 指先の血流 <small>爪押し・戻るまで</small></p>
-        <div class="m-in"><input id="m-crt" type="text" inputmode="decimal"><span class="unit">秒</span></div></div>
-      <div class="m-item"><p class="m-t">⑤ 食事チェック <small>はいの数</small></p>
-        <div class="m-in"><input id="m-shoku" type="text" inputmode="numeric"><span class="unit">/10点</span></div></div>
+      <div class="m-item"><p class="m-t">④ ウェルビーチェック <small>点数</small></p>
+        <div class="m-in"><input id="m-wellbe" type="text" inputmode="numeric"><span class="unit">点</span></div></div>
+      <div class="m-item"><p class="m-t">⑤ プリズムiO <small>スコア</small></p>
+        <div class="m-in"><input id="m-prism" type="text" inputmode="numeric"></div></div>
       <div class="m-item wide"><p class="m-t">③ 壁立ち姿勢(腰のすき間・手のひら)</p>
         <div class="seg" id="seg-kabe">
           <button onclick="segSet('kabe','0枚',this)">0枚</button>
@@ -248,7 +248,7 @@ function addP(){
   save(); render();
 }
 
-var FIELDS = ['ashi-r','ashi-l','aku-r','aku-l','crt','shoku','zen-b','zen-a'];
+var FIELDS = ['ashi-r','ashi-l','aku-r','aku-l','wellbe','prism','zen-b','zen-a'];
 function openSheet(i){
   currentIdx = i;
   var p = state.people[i];
@@ -295,8 +295,8 @@ function fmt(p){
     '・①片脚立ち: 右 ' + v(r['ashi-r']) + (r['ashi-r']?'秒':'') + ' / 左 ' + v(r['ashi-l']) + (r['ashi-l']?'秒':'') + '\n' +
     '・②握力: 右 ' + v(r['aku-r']) + (r['aku-r']?'kg':'') + ' / 左 ' + v(r['aku-l']) + (r['aku-l']?'kg':'') + '\n' +
     '・③壁立ち姿勢(手のひら): ' + v(r.kabe) + '\n' +
-    '・④指先の血流(爪押し): ' + v(r['crt']) + (r['crt']?'秒':'') + '\n' +
-    '・⑤食事チェック: ' + v(r['shoku']) + (r['shoku']?'点/10点':'') + '\n' +
+    '・④ウェルビーチェック: ' + v(r['wellbe']) + (r['wellbe']?'点':'') + '\n' +
+    '・⑤プリズムiO: ' + v(r['prism']) + '\n' +
     '・⑥前屈の指先: まえ ' + v(r['zen-b']) + ' → あと ' + v(r['zen-a']) + '\n' +
     '・方向タイプ: ' + v(r.houkou) + '\n' +
     '・個別相談: ' + (r.soudan || '未定') + '\n' +
