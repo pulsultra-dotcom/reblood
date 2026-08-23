@@ -182,7 +182,12 @@ function load(){
   try{ var s = JSON.parse(localStorage.getItem(KEY)); if(s && s.people) return s; }catch(e){}
   return { people: [
     {name:'白本さん', here:false, rec:null},
-    {name:'石田さん', here:false, rec:null}
+    {name:'石田さん', here:false, rec:null},
+    {name:'吉田さん', here:false, rec:null},
+    {name:'内桶さん', here:false, rec:null},
+    {name:'高橋さん', here:false, rec:null},
+    {name:'小島さん', here:false, rec:null},
+    {name:'大植さん', here:false, rec:null}
   ]};
 }
 function save(){ localStorage.setItem(KEY, JSON.stringify(state)); }
