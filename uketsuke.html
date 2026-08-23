@@ -179,7 +179,17 @@ var currentIdx = -1;
 var segVals = {};
 
 function load(){
-  try{ var s = JSON.parse(localStorage.getItem(KEY)); if(s && s.people) return s; }catch(e){}
+  var preset = ['白本さん','石田さん','吉田さん','内桶さん','高橋さん','小島さん','大植さん'];
+  try{
+    var s = JSON.parse(localStorage.getItem(KEY));
+    if(s && s.people){
+      preset.forEach(function(n){
+        if(!s.people.some(function(p){ return p.name === n; }))
+          s.people.push({name:n, here:false, rec:null});
+      });
+      return s;
+    }
+  }catch(e){}
   return { people: [
     {name:'白本さん', here:false, rec:null},
     {name:'石田さん', here:false, rec:null},
