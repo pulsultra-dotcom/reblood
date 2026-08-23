@@ -1,0 +1,218 @@
+<meta charset="UTF-8">
+<title>個別相談のご希望 ― ReBlood</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --cream:#FBF6EE; --white:#FFFFFF; --cream2:#F3ECE0;
+  --ink:#26231E; --ink2:#5E574C; --ink3:#938A7C;
+  --green:#2C5F45; --greensoft:#E9F0EA;
+  --coral:#C1543A; --coral2:#D96C4F; --coralsoft:#FBEDE7;
+  --line:#E2D8C7;
+  --fd:"Hiragino Mincho ProN","Yu Mincho",YuMincho,serif;
+  --fb:"Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic",YuGothic,sans-serif;
+}
+body{background:var(--cream);color:var(--ink);font-family:var(--fb);
+  font-size:17px;line-height:1.9;-webkit-text-size-adjust:100%}
+.wrap{max-width:27.5rem;width:100%;margin:0 auto;padding:0 1.15rem 5rem;overflow-x:hidden}
+b{font-weight:800}
+em{font-style:normal;color:var(--coral)}
+
+.hero{text-align:center;padding:2.6rem 0 1.4rem}
+.date{display:inline-flex;align-items:center;gap:.45rem;background:var(--green);color:var(--cream);
+  font-size:.86rem;font-weight:700;padding:.42rem 1.15rem;border-radius:99px;margin-bottom:1.2rem}
+.date svg{width:1em;height:1em}
+h1{font-family:var(--fd);font-weight:600;font-size:1.85rem;line-height:1.5}
+.hero .sub{font-size:1rem;color:var(--ink2);margin-top:1rem}
+.freebadge{display:flex;align-items:center;justify-content:center;gap:.6rem;margin-top:1.3rem;flex-wrap:wrap}
+.fb1{background:var(--coral);color:#fff;font-weight:800;font-size:1.05rem;padding:.5rem 1.4rem;border-radius:99px}
+.fb2{font-size:.85rem;color:var(--ink2);font-weight:700}
+
+.card{background:var(--white);border:1px solid var(--line);border-radius:16px;
+  padding:1.45rem 1.3rem;margin-top:1.15rem;
+  box-shadow:0 1px 2px rgba(60,45,25,.04),0 8px 22px -14px rgba(60,45,25,.15)}
+.label{display:flex;align-items:center;gap:.55rem;font-size:1.02rem;font-weight:800;
+  color:var(--green);margin-bottom:1rem}
+.label .lic{flex:0 0 2rem;width:2rem;height:2rem;border-radius:50%;background:var(--greensoft);
+  display:flex;align-items:center;justify-content:center}
+.label .lic svg{width:1.15rem;height:1.15rem}
+
+/* 3つの選択肢 */
+.opts{display:flex;flex-direction:column;gap:.9rem}
+.opt{display:flex;gap:.9rem;align-items:center;text-align:left;width:100%;
+  border:2.5px solid var(--green);border-radius:14px;background:var(--greensoft);
+  padding:1.1rem 1.1rem;font-family:var(--fb);cursor:pointer}
+.opt:active{transform:scale(.98)}
+.opt .oi{flex:0 0 2.6rem;width:2.6rem;height:2.6rem;border-radius:50%;background:var(--green);
+  display:flex;align-items:center;justify-content:center}
+.opt .oi svg{width:1.4rem;height:1.4rem}
+.opt .ot{display:block;font-size:1.08rem;font-weight:800;color:var(--green);line-height:1.5}
+.opt .od{display:block;font-size:.84rem;color:var(--ink2);font-weight:700;line-height:1.6;margin-top:.1rem}
+.optnote{font-size:.86rem;color:var(--ink2);margin-top:.95rem;line-height:1.8}
+
+.do{display:flex;flex-direction:column;gap:1.05rem}
+.do-i{display:flex;gap:.9rem;align-items:flex-start}
+.do-ic{flex:0 0 2.4rem;width:2.4rem;height:2.4rem;border-radius:50%;background:var(--coralsoft);
+  display:flex;align-items:center;justify-content:center;margin-top:.1rem}
+.do-ic svg{width:1.3rem;height:1.3rem}
+.do-t{font-weight:800;font-size:1.02rem}
+.do-d{font-size:.9rem;color:var(--ink2);margin-top:.15rem;line-height:1.75}
+
+.fine{font-size:.8rem;color:var(--ink3);line-height:1.85;margin-top:1.1rem;
+  background:var(--cream2);border-radius:12px;padding:1rem 1.05rem}
+
+.cta{position:sticky;bottom:1rem;margin-top:1.6rem;text-align:center;z-index:5}
+.cta button{width:100%;background:var(--green);color:#fff;border:none;font-family:var(--fb);
+  font-size:1.12rem;font-weight:800;padding:1.05rem;border-radius:99px;cursor:pointer;
+  box-shadow:0 6px 18px -6px rgba(44,95,69,.5)}
+
+/* モーダル */
+.ov{position:fixed;inset:0;background:rgba(30,25,18,.55);display:none;
+  align-items:flex-end;justify-content:center;z-index:50;padding:1rem}
+.ov.show{display:flex}
+.sheet{background:#fff;border-radius:20px;max-width:min(27.5rem,94vw);width:100%;
+  max-height:92vh;overflow-y:auto;padding:1.6rem 1.4rem 1.4rem;text-align:center}
+.sh-t{font-size:1.05rem;font-weight:800;color:var(--ink3)}
+.sh-pick{font-size:1.3rem;font-weight:800;color:var(--green);line-height:1.5;margin:.35rem 0 .5rem}
+.sh-d{font-size:.9rem;color:var(--ink2);line-height:1.8}
+.field{text-align:left;margin:.7rem 0}
+.field label{display:block;font-size:.85rem;font-weight:800;color:var(--ink2);margin-bottom:.3rem}
+.field input,.field textarea{width:100%;font-family:var(--fb);font-size:1.1rem;padding:.85rem .9rem;
+  border:2px solid var(--line);border-radius:12px;background:var(--cream);color:var(--ink)}
+.field textarea{min-height:4.6rem;line-height:1.7;font-size:1rem}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--green)}
+.field .hint{font-size:.78rem;color:var(--ink3);font-weight:700;margin-top:.25rem}
+.err{color:var(--coral);font-size:.85rem;font-weight:800;min-height:1.3em;margin:.2rem 0 .3rem}
+.sh-send{display:block;width:100%;background:var(--green);color:#fff;border:none;cursor:pointer;
+  font-family:var(--fb);font-size:1.1rem;font-weight:800;padding:1rem;border-radius:99px;margin-top:.3rem}
+.sh-close{background:none;border:none;font-family:var(--fb);color:var(--ink3);
+  font-size:.9rem;font-weight:700;margin-top:1rem;cursor:pointer;padding:.4rem 1rem}
+.done-ic{width:3.4rem;height:3.4rem;border-radius:50%;background:var(--green);color:#fff;
+  font-size:1.9rem;font-weight:800;display:flex;align-items:center;justify-content:center;
+  margin:0 auto .8rem}
+</style>
+<div class="wrap">
+
+  <div class="hero">
+    <div class="date"><svg viewBox="0 0 24 24" fill="none" stroke="#FBF6EE" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-5.6-7-11a7 7 0 0 1 14 0c0 5.4-7 11-7 11z"/><circle cx="12" cy="10" r="2.6"/></svg> 対面／オンライン どちらでも</div>
+    <h1>教室のつづきを、<br><em>30分</em>だけ。</h1>
+    <p class="sub">教室で測った、あなたの数字。<br>その読み方を、マンツーマンで<br>ゆっくりお伝えする時間です。</p>
+    <div class="freebadge"><span class="fb1">参加費 無料</span><span class="fb2">教室にご参加の方の特典です</span></div>
+  </div>
+
+  <div class="card" id="opts-card">
+    <p class="label"><span class="lic"><svg viewBox="0 0 24 24" fill="none" stroke="#2C5F45" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></span>ご都合のいいものを、ひとつ</p>
+    <div class="opts">
+      <button class="opt" onclick="pick('9月27日の前後')">
+        <span class="oi"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M3.5 10h17M8 2.8v4M16 2.8v4"/></svg></span>
+        <span><span class="ot">9月27日の、前後で</span><span class="od">次の教室の日です。会場でそのままどうぞ</span></span></button>
+      <button class="opt" onclick="pick('別の日に対面')">
+        <span class="oi"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4.5 20.5c1.2-4 4-6 7.5-6s6.3 2 7.5 6"/></svg></span>
+        <span><span class="ot">別の日に、会って</span><span class="od">鎌取の会場で。日にちはご相談します</span></span></button>
+      <button class="opt" onclick="pick('別の日にオンライン')">
+        <span class="oi"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M10.5 18.5h3"/></svg></span>
+        <span><span class="ot">別の日に、オンラインで</span><span class="od">おうちからスマホで。操作はこちらでご案内します</span></span></button>
+    </div>
+    <p class="optnote">迷っていても大丈夫です。<br>「まだ決めていない」も、そのまま書いていただけます。</p>
+  </div>
+
+  <div class="card">
+    <p class="label"><span class="lic"><svg viewBox="0 0 24 24" fill="none" stroke="#2C5F45" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-8M21 20H3"/></svg></span>30分でやること</p>
+    <div class="do">
+      <div class="do-i"><div class="do-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#C1543A" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-8M21 20H3"/></svg></div><div>
+        <div class="do-t">数字の読み解き</div>
+        <div class="do-d">教室で測った数字を一緒に見ながら、「どこが強みで、どこが伸びしろか」をお伝えします。</div>
+      </div></div>
+      <div class="do-i"><div class="do-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#C1543A" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="13" cy="4.5" r="2"/><path d="M9 20.5l2.5-6L9 10l4-2 2 3.5 3 1.5M11.5 14.5l-1 6M13 8l-4 2-1.5 3"/></svg></div><div>
+        <div class="do-t">あなたの「方向」の確認</div>
+        <div class="do-d">動きを見ながら、あなたに合う動かし方を確認します。<b>あなた用の宿題</b>を、ひとつだけ決めます。</div>
+      </div></div>
+      <div class="do-i"><div class="do-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#C1543A" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5h16a1.5 1.5 0 0 1 1.5 1.5v9a1.5 1.5 0 0 1-1.5 1.5h-9L6 21v-3.5H4A1.5 1.5 0 0 1 2.5 16V7A1.5 1.5 0 0 1 4 5.5z"/></svg></div><div>
+        <div class="do-t">なんでも相談</div>
+        <div class="do-d">膝・腰・肩のこと、食事のこと。教室で聞きそびれたことを、遠慮なくどうぞ。</div>
+      </div></div>
+    </div>
+  </div>
+
+  <div class="fine">
+    本サービスは医療行為ではなく、健康の維持・増進を目的とした相談・運動指導です。治療が必要な症状は医療機関をご案内します。<br>
+    食生活だけで改善が難しい場合には、ご希望の方に限り、サプリメントをご紹介する場合があります。ご希望のない方にはご案内しません。
+  </div>
+
+  <div class="cta">
+    <button onclick="document.getElementById('opts-card').scrollIntoView({behavior:'smooth'})">希望をえらぶ</button>
+  </div>
+
+</div>
+
+<div class="ov" id="ov" onclick="if(event.target===this)hide()">
+  <div class="sheet" id="sheet-form">
+    <p class="sh-t">ご希望</p>
+    <p class="sh-pick" id="sh-pick">9月27日の前後</p>
+    <p class="sh-d">お名前とお電話番号を入れて、<br>いちばん下のボタンを押してください。</p>
+    <div class="field"><label for="sd-name">お名前</label>
+      <input id="sd-name" type="text" autocomplete="name" placeholder="例: 山田 花子"></div>
+    <div class="field"><label for="sd-tel">お電話番号</label>
+      <input id="sd-tel" type="tel" autocomplete="tel" inputmode="tel" placeholder="例: 090-1234-5678"></div>
+    <div class="field"><label for="sd-when">ご都合のいい曜日・時間帯</label>
+      <textarea id="sd-when" placeholder="例: 平日の夕方なら / 土日の午前中がうれしいです"></textarea>
+      <p class="hint">わからなければ、空けたままで大丈夫です。</p></div>
+    <div class="field"><label for="sd-memo">相談したいこと(あれば)</label>
+      <textarea id="sd-memo" placeholder="例: 膝が痛い日がある / 朝の食事をどうにかしたい"></textarea></div>
+    <p class="err" id="sd-err"></p>
+    <button class="sh-send" id="sd-send" onclick="send()">この内容で送る</button>
+    <button class="sh-close" onclick="hide()">とじる</button>
+  </div>
+  <div class="sheet" id="sheet-done" style="display:none">
+    <div class="done-ic">&#10003;</div>
+    <p class="sh-t" style="font-size:1.25rem;font-weight:800;color:var(--ink)">ありがとうございます</p>
+    <p class="sh-d" style="margin-top:.6rem">村田から、<b>公式LINEで日時のご相談</b>をお送りします。<br>そのままお返事いただければ大丈夫です。</p>
+    <button class="sh-close" onclick="hide()">とじる</button>
+  </div>
+</div>
+<iframe name="gform_frame" style="display:none" title="送信"></iframe>
+
+<script>
+var FORM_ACTION = 'PENDING';
+var E = {pick:'entry.PICK', name:'entry.NAME', tel:'entry.TEL', when:'entry.WHEN', memo:'entry.MEMO'};
+var current = '';
+function pick(t){
+  current = t;
+  document.getElementById('sh-pick').textContent = t;
+  document.getElementById('sd-err').textContent = '';
+  document.getElementById('sheet-form').style.display = '';
+  document.getElementById('sheet-done').style.display = 'none';
+  document.getElementById('ov').classList.add('show');
+}
+function hide(){ document.getElementById('ov').classList.remove('show'); }
+function send(){
+  var name = document.getElementById('sd-name').value.trim();
+  var tel = document.getElementById('sd-tel').value.trim();
+  var err = document.getElementById('sd-err');
+  if(!name){ err.textContent = 'お名前を入れてください。'; return; }
+  if(!tel || !/^[0-9+\-() ]{8,}$/.test(tel)){ err.textContent = '電話番号をご確認ください(数字とハイフンで)。'; return; }
+  var btn = document.getElementById('sd-send');
+  btn.disabled = true; btn.textContent = '送信しています…';
+  var f = document.createElement('form');
+  f.action = FORM_ACTION; f.method = 'POST'; f.target = 'gform_frame';
+  var fields = {};
+  fields[E.pick] = current;
+  fields[E.name] = name;
+  fields[E.tel] = tel;
+  fields[E.when] = document.getElementById('sd-when').value.trim();
+  fields[E.memo] = document.getElementById('sd-memo').value.trim();
+  for(var k in fields){
+    var i = document.createElement('input');
+    i.type = 'hidden'; i.name = k; i.value = fields[k];
+    f.appendChild(i);
+  }
+  document.body.appendChild(f);
+  f.submit();
+  setTimeout(function(){
+    f.remove();
+    btn.disabled = false; btn.textContent = 'この内容で送る';
+    document.getElementById('sheet-form').style.display = 'none';
+    document.getElementById('sheet-done').style.display = '';
+  }, 900);
+}
+</script>

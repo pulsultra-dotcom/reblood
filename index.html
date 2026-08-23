@@ -267,7 +267,7 @@ h1{font-family:var(--fd);font-weight:600;font-size:1.9rem;line-height:1.5}
 <iframe name="gform_frame" style="display:none" title="送信"></iframe>
 
 <script>
-var FORM_ACTION = 'https://docs.google.com/forms/d/e/1FAIpQLSeyVR45909YNeA4vvYEam2AtNYtniknM2V_VTKbkYCdy8Q2Ag/formResponse';
+var FORM_ACTION = 'https://docs.google.com/forms/d/e/1FAIpQLSdRZz-QuiCLoKiRFfwoYJzuerKOrmCsuXod7A90Jn74ERXk_g/formResponse';
 var SLOT_LABEL = {'8:00':'8:00〜8:30','8:30':'8:30〜9:00','9:00':'9:00〜9:30','9:30':'9:30〜10:00','12:30':'12:30〜13:00','13:00':'13:00〜13:30','13:30':'13:30〜14:00'};
 var current = '';
 function pick(t){
@@ -290,8 +290,8 @@ function send(){
   btn.disabled = true; btn.textContent = '送信しています…';
   var f = document.createElement('form');
   f.action = FORM_ACTION; f.method = 'POST'; f.target = 'gform_frame';
-  var fields = {'entry.92696493': SLOT_LABEL[current] || current,
-                'entry.652786621': name, 'entry.209967935': tel};
+  var fields = {'entry.314289094': SLOT_LABEL[current] || current,
+                'entry.744912279': name, 'entry.2129926340': tel};
   for(var k in fields){
     var i = document.createElement('input');
     i.type = 'hidden'; i.name = k; i.value = fields[k];

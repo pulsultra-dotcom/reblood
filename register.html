@@ -155,7 +155,7 @@ h1{font-family:var(--fd);font-weight:600;font-size:1.85rem;line-height:1.5}
 <iframe name="gform_frame" style="display:none" title="送信"></iframe>
 
 <script>
-var FORM_ACTION = 'https://docs.google.com/forms/d/e/1FAIpQLSdBquupDB8rNEOxQc2M72TcGXrCp0jxLRt4J13b9ydOhN1pWw/formResponse';
+var FORM_ACTION = 'https://docs.google.com/forms/d/e/1FAIpQLSfKUqg14EsGya4wNjXcSo43r4Cb0hMFQKuMluR4P0jHLfL9_Q/formResponse';
 function send(){
   var name = document.getElementById('rg-name').value.trim();
   var tel = document.getElementById('rg-tel').value.trim();
@@ -166,7 +166,7 @@ function send(){
   btn.disabled = true; btn.textContent = '送信しています…';
   var f = document.createElement('form');
   f.action = FORM_ACTION; f.method = 'POST'; f.target = 'gform_frame';
-  var fields = {'entry.745846687': name, 'entry.927152766': tel};
+  var fields = {'entry.1555740371': name, 'entry.1416887578': tel};
   for(var k in fields){
     var i = document.createElement('input');
     i.type = 'hidden'; i.name = k; i.value = fields[k];
