@@ -1,0 +1,216 @@
+<meta charset="UTF-8">
+<title>ReBlood 第1回の復習</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --cream:#FBF6EE; --white:#FFFFFF; --cream2:#F3ECE0;
+  --ink:#26231E; --ink2:#5E574C; --ink3:#938A7C;
+  --green:#2C5F45; --greensoft:#E9F0EA;
+  --coral:#C1543A; --coral2:#D96C4F; --coralsoft:#FBEDE7;
+  --gold:#B07D22; --goldsoft:#F8EFDA;
+  --line:#E2D8C7;
+  --fd:"Hiragino Mincho ProN","Yu Mincho",YuMincho,serif;
+  --fb:"Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic",YuGothic,sans-serif;
+}
+body{background:var(--cream);color:var(--ink);font-family:var(--fb);
+  font-size:17px;line-height:1.9;-webkit-text-size-adjust:100%}
+.wrap{max-width:27.5rem;width:100%;margin:0 auto;padding:0 1.15rem 4rem;overflow-x:hidden}
+b{font-weight:800}
+em{font-style:normal;color:var(--coral)}
+
+/* ヘッダー */
+.hero{text-align:center;padding:2.8rem 0 1.4rem}
+.date{display:inline-block;background:var(--ink);color:var(--cream);
+  font-size:.82rem;font-weight:700;padding:.38rem 1.1rem;border-radius:99px;margin-bottom:1.1rem}
+h1{font-family:var(--fd);font-weight:600;font-size:1.95rem;line-height:1.45}
+.hero .sub{font-size:.95rem;color:var(--ink2);margin-top:.9rem}
+
+/* セクション見出し */
+.sec{margin-top:2.6rem}
+.sec-n{display:flex;align-items:center;gap:.6rem;margin-bottom:.9rem}
+.sec-n span{flex:0 0 1.9rem;height:1.9rem;border-radius:50%;background:var(--green);color:#fff;
+  font-size:.95rem;font-weight:800;display:flex;align-items:center;justify-content:center}
+.sec-n h2{font-family:var(--fd);font-weight:600;font-size:1.4rem;line-height:1.4}
+
+.card{background:var(--white);border:1px solid var(--line);border-radius:16px;
+  padding:1.3rem 1.2rem;margin-top:.9rem;
+  box-shadow:0 1px 2px rgba(60,45,25,.04),0 8px 22px -14px rgba(60,45,25,.15)}
+.lead{font-size:.95rem;color:var(--ink2);line-height:1.85}
+
+/* 4つのプロセス */
+.proc{display:flex;flex-direction:column;gap:.7rem}
+.pr{display:flex;gap:.85rem;align-items:baseline;padding-bottom:.7rem;border-bottom:1px solid var(--cream2)}
+.proc .pr:last-child{border-bottom:none;padding-bottom:0}
+.pr-t{flex:0 0 4.4rem;font-size:1.1rem;font-weight:800;color:var(--green)}
+.pr-d{font-size:.9rem;color:var(--ink2);line-height:1.75}
+.pr-d b{color:var(--ink)}
+.pr.hilite .pr-t{color:var(--coral)}
+
+/* スイッチ */
+.sw{display:flex;flex-direction:column;gap:.9rem}
+.sw-i{border-left:3px solid var(--green);padding-left:.95rem}
+.sw-t{font-size:1.15rem;font-weight:800;color:var(--green)}
+.sw-d{font-size:.92rem;color:var(--ink2);line-height:1.8;margin-top:.15rem}
+.sw-n{display:inline-block;background:var(--coralsoft);color:var(--coral);font-weight:800;
+  font-size:.82rem;padding:.1rem .6rem;border-radius:99px;margin-top:.4rem}
+
+/* 6つの数字 */
+.num{width:100%;border-collapse:collapse;font-size:.92rem}
+.num td{border-bottom:1px solid var(--cream2);padding:.75rem .2rem;vertical-align:top}
+.num tr:last-child td{border-bottom:none}
+.num .k{font-weight:800;font-size:1rem}
+.num .k small{display:block;font-size:.78rem;color:var(--ink3);font-weight:700;margin-top:.1rem}
+.num .v{text-align:right;color:var(--green);font-weight:800;white-space:nowrap;font-size:.85rem}
+
+/* 明日からの3つ */
+.todo{display:flex;flex-direction:column;gap:.85rem}
+.td{display:flex;gap:.85rem;align-items:flex-start}
+.td-n{flex:0 0 1.8rem;height:1.8rem;border-radius:50%;background:var(--coral);color:#fff;
+  font-size:.9rem;font-weight:800;display:flex;align-items:center;justify-content:center;margin-top:.15rem}
+.td-t{font-weight:800;font-size:1.02rem}
+.td-d{font-size:.87rem;color:var(--ink2);line-height:1.7;margin-top:.1rem}
+
+/* 引用 */
+.quote{background:var(--greensoft);border-radius:14px;padding:1.2rem 1.15rem;margin-top:1.5rem}
+.quote p{font-family:var(--fd);font-size:1.05rem;line-height:1.75;color:var(--green);font-weight:600}
+.quote .src{font-family:var(--fb);font-size:.78rem;color:var(--ink3);font-weight:700;margin-top:.6rem}
+
+/* 次回 */
+.next{background:var(--ink);color:var(--cream);border-radius:18px;padding:1.6rem 1.3rem;margin-top:2.6rem}
+.next .lb{font-size:.8rem;font-weight:800;color:#E8A98F;letter-spacing:.08em}
+.next h2{font-family:var(--fd);font-weight:600;font-size:1.5rem;line-height:1.45;margin-top:.4rem}
+.next .info{font-size:.9rem;color:#C9C0B2;line-height:1.85;margin-top:.9rem}
+.next .info b{color:var(--cream)}
+.btn{display:block;background:#06C755;color:#fff;text-decoration:none;text-align:center;
+  font-size:1.05rem;font-weight:800;padding:.95rem;border-radius:99px;margin-top:1.1rem}
+.btn.sub{background:transparent;color:var(--cream);border:2px solid #5E574C;margin-top:.6rem;font-size:.98rem}
+
+.fine{font-size:.78rem;color:var(--ink3);line-height:1.8;margin-top:1.6rem;
+  background:var(--cream2);border-radius:12px;padding:.95rem 1rem}
+.sign{text-align:center;font-size:.9rem;color:var(--ink2);margin-top:2rem;line-height:1.9}
+.sign b{font-size:1.05rem}
+</style>
+<div class="wrap">
+
+  <div class="hero">
+    <div class="date">ReBlood 第1回 ・ 2026年8月23日(日)</div>
+    <h1>老化の正体は、<br><em>たった3つ。</em></h1>
+    <p class="sub">あの日おはなしした内容を、<br>いつでも見返せるようにまとめました。</p>
+  </div>
+
+  <div class="sec">
+    <div class="sec-n"><span>1</span><h2>老化を進める、4つのこと</h2></div>
+    <div class="card">
+      <div class="proc">
+        <div class="pr"><div class="pr-t">酸化</div><div class="pr-d">体が<b>サビる</b>。呼吸した酸素の一部が活性酸素になって、細胞を傷つけます。守ってくれるのが、野菜と果物の色のもと ― <b>カロテノイド</b>。</div></div>
+        <div class="pr"><div class="pr-t">糖化</div><div class="pr-d">体が<b>コゲる</b>。余った糖がタンパク質にくっついて、硬くて元に戻らない物質になります。健診の<b>HbA1c</b>は、正式名称を「糖化ヘモグロビン」といいます。あの数字は、コゲそのものの測定値でした。</div></div>
+        <div class="pr"><div class="pr-t">炎症</div><div class="pr-d">体が<b>くすぶる</b>。風邪の炎症がボヤなら、慢性炎症は床下でくすぶる線香の火。痛くも熱くもないのに、20年かけて柱を傷めます。</div></div>
+        <div class="pr hilite"><div class="pr-t">遺伝子<br>発現</div><div class="pr-d">遺伝子は<b>家の設計図</b>。生涯ほぼ変わりません。でも設計図だけでは家は建たない。建てるのは<b>大工さん(酵素)</b>です。<br>そして — <b>その大工さんは、タンパク質でできています。</b></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-n"><span>2</span><h2>4つ全部を動かす、3つのスイッチ</h2></div>
+    <div class="card">
+      <div class="sw">
+        <div class="sw-i">
+          <div class="sw-t">筋肉</div>
+          <div class="sw-d">筋肉は10年で約4%、静かに減ります。でも大事なのは、<b>「力」は「量」の3倍の速さで落ちる</b>こと。見た目が変わらなくても、力は先に抜けていきます。<br>そして筋肉は、体で唯一の<b>「糖の倉庫」</b>。食後の糖の8割を引き取ります。倉庫が小さくなると、糖は血に残ってコゲになる ― <b>筋肉を守ることは、コゲを防ぐことでした。</b></div>
+          <span class="sw-n">90歳を過ぎても、8週間で筋力は増えました</span>
+        </div>
+        <div class="sw-i">
+          <div class="sw-t">血流</div>
+          <div class="sw-d">血管は、揉んでも押してもしなやかにはなりません。血の流れが速くなって内側の壁がこすられると、<b>一酸化窒素</b>が出て、それが血管をゆるめます。流れることでしか、整わないんです。</div>
+          <span class="sw-n">毛細血管は、4週間で増えはじめます</span>
+        </div>
+        <div class="sw-i">
+          <div class="sw-t">栄養</div>
+          <div class="sw-d">筋肉を動かし、血を流しても、<b>材料</b>が届かなければ大工さんは働けません。<br>1食にタンパク質<b>20g</b>(体重50kgの方の目安)。卵1個で6g、納豆1パックで8g、鮭1切れで20g。<br>若い頃は体重1kgあたり0.24gで足りたのが、年齢を重ねると<b>0.4g</b>必要になります。消化酵素も酵素 ― 切る道具そのものが減っていくからです。</div>
+          <span class="sw-n">ただし、栄養だけでは効きませんでした</span>
+        </div>
+      </div>
+      <p class="lead" style="margin-top:1.1rem">3つは、ひとつの輪です。筋肉が動くから血が流れ、血が流れるから栄養が届き、栄養が届くから筋肉が作られる。<b>輪だから、どこから回し始めても大丈夫です。</b></p>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-n"><span>3</span><h2>あの日測った、6つの数字</h2></div>
+    <div class="card">
+      <table class="num">
+        <tr><td class="k">① 片脚立ち<small>筋肉 ― 転ばない力</small></td><td class="v">最大60秒</td></tr>
+        <tr><td class="k">② 握力<small>筋肉 ― 全身の筋肉の代表選手</small></td><td class="v">女性の目安 18kg</td></tr>
+        <tr><td class="k">③ 壁立ち姿勢<small>血流 ― 姿勢は血の通り道</small></td><td class="v">手のひら1枚が目安</td></tr>
+        <tr><td class="k">④ ウェルビーチェック<small>栄養 ― 食べ方のふりかえり</small></td><td class="v">点数</td></tr>
+        <tr><td class="k">⑤ プリズムiO<small>栄養 ― 体の抗酸化力</small></td><td class="v">スコア</td></tr>
+        <tr><td class="k">⑥ 前屈の指先<small>実技 ― あの日の変化</small></td><td class="v">まえ → あと</td></tr>
+      </table>
+      <p class="lead" style="margin-top:1rem">この数字は、となりの人と比べるものではありません。<b>未来のご自分と比べるための数字</b>です。次回また測れば、変化が見えます。</p>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-n"><span>4</span><h2>体には、向いている方向があります</h2></div>
+    <div class="card">
+      <p class="lead">同じ体操やストレッチをやっても、楽になる人と、痛くなる人がいます。体操が悪いのではなく、<b>その方に合う方向ではなかった</b>だけです。骨の形も、関節の向きも、これまでの使い方も、一人ひとり違います。</p>
+      <p class="lead" style="margin-top:.9rem">あの日は、前に丸めるのと後ろに反るのを比べて、<b>楽なほう</b>を探しました。そして、大きく速くではなく、<b>小さく、ゆっくり、呼吸を止めずに</b>動かしました。外側の大きな筋肉(アウター)ではなく、支える側のインナーを起こすためです。</p>
+      <p class="lead" style="margin-top:.9rem">たった5分で、指先の位置が変わりましたね。<b>若返りって、こういうことなんです。</b></p>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-n"><span>5</span><h2>明日から、どれかひとつ</h2></div>
+    <div class="card">
+      <div class="todo">
+        <div class="td"><div class="td-n">1</div><div>
+          <div class="td-t">飲み物を変える</div>
+          <div class="td-d">加糖の炭酸1本で砂糖40g。1日の目安25gを、1本で超えてしまいます。</div>
+        </div></div>
+        <div class="td"><div class="td-n">2</div><div>
+          <div class="td-t">朝にタンパク質を1品</div>
+          <div class="td-d">卵1個でいいんです。朝がいちばん軽くなりがちなので、ここが伸びます。</div>
+        </div></div>
+        <div class="td"><div class="td-n">3</div><div>
+          <div class="td-t">麺の汁を残す</div>
+          <div class="td-d">日本人女性の食塩の約7割は、しょうゆや塩などの調味料から。これだけで、だいぶ変わります。</div>
+        </div></div>
+      </div>
+      <p class="lead" style="margin-top:1.1rem">全部やらなくて大丈夫です。<b>ひとつでいい。</b>続きそうなものを、ひとつ選んでください。</p>
+    </div>
+
+    <div class="quote">
+      <p>現在バランス良く食べている人が、<br>無理に食生活を変えると、<br>かえって悪影響が現れる。</p>
+      <div class="src">― 内閣府 食品安全委員会</div>
+    </div>
+    <p class="lead" style="margin-top:1rem">あの日おはなししたことは、<b>怖がるための話ではなく、選ぶための話</b>でした。</p>
+  </div>
+
+  <div class="next">
+    <div class="lb">ReBlood 第2回</div>
+    <h2>9月27日(日)<br>10:00〜11:30</h2>
+    <div class="info">
+      <b>WISE SPACE鎌取</b>(千葉市緑区おゆみ野3-10-3)<br>
+      鎌取駅南口から歩いて約3分・5階建てビルの<b>3階</b><br>
+      9:40開場 ／ 参加費500円<br>
+      <br>
+      教室の<b>前(8:00〜10:00)</b>と<b>あと(12:30〜14:00)</b>に、30分の<b>無料個別相談</b>もご用意しています。前だけ、あとだけ、どちらでも大丈夫です。
+    </div>
+    <a class="btn" href="./register.html">次回の参加登録をする</a>
+    <a class="btn sub" href="./">個別相談の時間をえらぶ</a>
+  </div>
+
+  <div class="fine">
+    このページは、8月23日の健康教室にご参加いただいた方へのまとめです。<br>
+    本教室は医療行為ではなく、健康の維持・増進を目的とした教室です。治療が必要な症状は、医療機関にご相談ください。
+  </div>
+
+  <div class="card" style="margin-top:1.6rem;background:var(--greensoft);border-color:#C8DCCD">
+    <p class="lead" style="color:var(--ink2)">この教室には、<b style="color:var(--green)">ReBlood(リブラッド)</b>という名前をつけました。<br>
+    <b>血を入れ替える。</b>体を、根本から変えていく ― そういう意味です。<br>
+    ひと月にいちど、測って、動いて、また測る。その積み重ねでしか変わらないと思っているので、これから毎月続けていきます。</p>
+  </div>
+
+  <p class="sign">またお会いできるのを、楽しみにしています。<br><b>村田 雄駿</b> ／ 理学療法士</p>
+
+</div>
