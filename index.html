@@ -82,6 +82,15 @@ em{font-style:normal;color:var(--coral2)}
 .mi .t{display:block;font-size:1.05rem;font-weight:800}
 .mi .s{display:block;font-size:.82rem;color:var(--ink3);font-weight:700;margin-top:.1rem;line-height:1.6}
 .mi .ar{margin-left:auto;color:var(--ink3);font-weight:800}
+.mi.locked{background:var(--cream2);border-style:dashed;box-shadow:none}
+.mi.locked .ic{background:#E8E0D2}
+.mi.locked .t{color:var(--ink2)}
+
+/* メニューの見出し */
+.mg{font-size:.8rem;font-weight:800;color:var(--ink3);letter-spacing:.08em;
+  margin:1.6rem 0 -.2rem;padding-left:.2rem}
+.mg:first-child{margin-top:1.1rem}
+
 
 /* プロフィール */
 .prof{display:flex;gap:1.1rem;align-items:center}
@@ -94,6 +103,10 @@ em{font-style:normal;color:var(--coral2)}
 .pl li{font-size:.88rem;line-height:1.95;color:var(--ink2);padding-left:1.3rem;position:relative}
 .pl li::before{content:"";position:absolute;left:.1rem;top:.78rem;width:.42rem;height:.42rem;
   border-radius:50%;background:var(--coral2)}
+.pl .cf{display:inline-flex;align-items:center;gap:.28rem;font-size:.83rem;font-weight:800;
+  color:var(--green);text-decoration:none;border-bottom:1.5px solid #BBD0C0;padding-bottom:.06rem;margin-top:.15rem}
+.pl .cf span{font-size:.78rem}
+.pl .cf:hover,.pl .cf:focus-visible{border-bottom-color:var(--green)}
 
 /* アクセス */
 .acc{font-size:.92rem;color:var(--ink2);line-height:1.95}
@@ -143,21 +156,32 @@ em{font-style:normal;color:var(--coral2)}
   <div class="sec">
     <p class="sec-t">ご案内</p>
     <div class="menu">
+
+      <p class="mg">申し込む</p>
       <a class="mi" href="./register.html">
         <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#2C5F45" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M3.5 10h17M8 2.8v4M16 2.8v4"/></svg></span>
-        <span class="tx"><span class="t">次回の参加登録</span><span class="s">9月27日(日)・お名前と電話番号だけ</span></span>
-        <span class="ar">›</span>
+        <span class="tx"><span class="t">次回の参加登録</span><span class="s">9月27日(日)・入力は1分</span></span>
+        <span class="ar">&rsaquo;</span>
       </a>
       <a class="mi coralic" href="./yoyaku.html">
         <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#C1543A" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></span>
-        <span class="tx"><span class="t">無料個別相談の予約</span><span class="s">30分×7枠・教室の前でもあとでも</span></span>
-        <span class="ar">›</span>
+        <span class="tx"><span class="t">無料個別相談の予約</span><span class="s">9月27日・30分&times;7枠・無料</span></span>
+        <span class="ar">&rsaquo;</span>
       </a>
+
+      <p class="mg">ふりかえる</p>
+      <div class="mi locked">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#938A7C" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="4.2" y="10.2" width="15.6" height="10.3" rx="2.4"/><path d="M8.2 10.2V7.6a3.8 3.8 0 0 1 7.6 0v2.6"/></svg></span>
+        <span class="tx"><span class="t">第1回のアーカイブ</span><span class="s">ご参加された方に、公式LINEでお送りしています</span></span>
+      </div>
+
+      <p class="mg">つながる</p>
       <a class="mi" href="https://lin.ee/zmnvHkP" target="_blank" rel="noopener">
         <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#2C5F45" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5h16a1.5 1.5 0 0 1 1.5 1.5v9a1.5 1.5 0 0 1-1.5 1.5h-9L6 21v-3.5H4A1.5 1.5 0 0 1 2.5 16V7A1.5 1.5 0 0 1 4 5.5z"/></svg></span>
-        <span class="tx"><span class="t">公式LINE</span><span class="s">開催のお知らせ・ご質問はこちらから</span></span>
-        <span class="ar">›</span>
+        <span class="tx"><span class="t">公式LINE</span><span class="s">開催のお知らせ・ご質問はこちら</span></span>
+        <span class="ar">&rsaquo;</span>
       </a>
+
     </div>
   </div>
 
@@ -169,10 +193,12 @@ em{font-style:normal;color:var(--coral2)}
         <div class="pn">村田 雄駿<small>むらた ゆうと ／ 理学療法士</small></div>
       </div>
       <ul class="pl">
-        <li>病院で3年間、リハビリを担当</li>
-        <li>麻布十番の美容整体院で施術</li>
+        <li>3歳から22歳まで野球。大学まで硬式野球部でピッチャー</li>
+        <li>19歳のとき、クラウドファンディングで84人から44万円が集まり、アメリカへ。MLBのトレーナー研修を受ける<br><a class="cf" href="https://camp-fire.jp/projects/228550/view" target="_blank" rel="noopener">そのときのページを見る<span>&#8599;</span></a></li>
+        <li>学生時代は、アスレティック施設「ソースアスリート」でパーソナルトレーナー。大学サッカー部にもトレーナーとして帯同<br><a class="cf" href="https://www.sosuathlete.net/" target="_blank" rel="noopener">施設のページを見る<span>&#8599;</span></a></li>
+        <li>病院で約3年間、リハビリを担当</li>
+        <li>麻布十番の美容整体院「R&#8734;tsメディカル整体院」で施術<br><a class="cf" href="https://beauty.hotpepper.jp/kr/slnH000651620/" target="_blank" rel="noopener">お店のページを見る<span>&#8599;</span></a></li>
         <li>ダイエット検定1級</li>
-        <li>サッカーチームのトレーナー帯同・MLBトレーナー研修(アメリカ)</li>
       </ul>
       <p class="lead" style="margin-top:.9rem">「もう歳だから」に、科学的な根拠はありません。90歳を過ぎても筋力が増えることは、35年前から研究で分かっています。だからReBloodは、<b>何歳からでも</b>始められます。</p>
     </div>
@@ -191,7 +217,7 @@ em{font-style:normal;color:var(--coral2)}
 
   <div class="fine">
     ReBloodは医療行為ではなく、健康の維持・増進を目的とした教室・相談です。治療が必要な症状は医療機関をご案内します。<br>
-    食生活だけで改善が難しい場合には、ご希望の方に限り、サプリメントをご紹介する場合があります。ご希望のない方にはご案内しません。
+    体づくりは、運動と食事の見直しが基本です。それだけで届かないところには、ご希望の方に限り、トレーニングや施術のメニュー、機器を使ったセルフケア、サプリメント・健康補助食品をご紹介する場合があります。ご希望のない方にはご案内しません。
   </div>
 
   <p class="foot">ReBlood ― アンチエイジング・トータルサポート</p>
