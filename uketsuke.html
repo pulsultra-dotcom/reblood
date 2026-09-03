@@ -183,11 +183,11 @@ h1{font-family:var(--fd);font-weight:600;font-size:1.4rem;text-align:center;padd
 var KEY = 'reblood-uketsuke-0927';
 var PREV_KEY = 'reblood-uketsuke-0823';   // 第1回の記録(同じスマホなら前回値を参照できる)
 var PIN = '0927';
+var PRESET = ['白本さん','白本さん(ご主人)','石田さん','吉田さん','内桶さん','高橋さん','小島さん','小島さん(ご主人)','大植さん'];
 var state = load();
 var currentIdx = -1;
 var segVals = {};
 
-var PRESET = ['白本さん','白本さん(ご主人)','石田さん','吉田さん','内桶さん','高橋さん','小島さん','小島さん(ご主人)','大植さん'];
 function load(){
   try{
     var s = JSON.parse(localStorage.getItem(KEY));
